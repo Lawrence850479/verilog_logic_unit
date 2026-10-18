@@ -1,0 +1,67 @@
+#! /mingw64/bin/vvp
+:ivl_version "13.0 (stable)" "(v13_0)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision - 12;
+:vpi_module "C:\msys64\mingw64\lib\ivl\system.vpi";
+:vpi_module "C:\msys64\mingw64\lib\ivl\vhdl_sys.vpi";
+:vpi_module "C:\msys64\mingw64\lib\ivl\vhdl_textio.vpi";
+:vpi_module "C:\msys64\mingw64\lib\ivl\v2005_math.vpi";
+:vpi_module "C:\msys64\mingw64\lib\ivl\va_math.vpi";
+S_000002658ba4bc40 .scope module, "tb_basic_logic" "tb_basic_logic" 2 4;
+ .timescale -9 -12;
+v000002658ba49640_0 .var "tb_a", 3 0;
+v000002658ba496e0_0 .net "tb_and_out", 3 0, L_000002658ba4a020;  1 drivers
+v000002658ba47260_0 .var "tb_b", 3 0;
+v000002658ba96650_0 .net "tb_not_out", 3 0, L_000002658ba4a3a0;  1 drivers
+v000002658ba96c90_0 .net "tb_or_out", 3 0, L_000002658ba49fb0;  1 drivers
+v000002658ba96290_0 .net "tb_xor_out", 3 0, L_000002658ba4a2c0;  1 drivers
+S_000002658ba4bdd0 .scope module, "dut" "basic_logic" 2 12, 3 3 0, S_000002658ba4bc40;
+ .timescale -9 -12;
+    .port_info 0 /INPUT 4 "a";
+    .port_info 1 /INPUT 4 "b";
+    .port_info 2 /OUTPUT 4 "and_out";
+    .port_info 3 /OUTPUT 4 "or_out";
+    .port_info 4 /OUTPUT 4 "xor_out";
+    .port_info 5 /OUTPUT 4 "not_out";
+L_000002658ba4a020 .functor AND 4, v000002658ba49640_0, v000002658ba47260_0, C4<1111>, C4<1111>;
+L_000002658ba49fb0 .functor OR 4, v000002658ba49640_0, v000002658ba47260_0, C4<0000>, C4<0000>;
+L_000002658ba4a2c0 .functor XOR 4, v000002658ba49640_0, v000002658ba47260_0, C4<0000>, C4<0000>;
+L_000002658ba4a3a0 .functor NOT 4, v000002658ba49640_0, C4<0000>, C4<0000>, C4<0000>;
+v000002658ba4bf60_0 .net "a", 3 0, v000002658ba49640_0;  1 drivers
+v000002658ba985f0_0 .net "and_out", 3 0, L_000002658ba4a020;  alias, 1 drivers
+v000002658ba49a70_0 .net "b", 3 0, v000002658ba47260_0;  1 drivers
+v000002658ba49b10_0 .net "not_out", 3 0, L_000002658ba4a3a0;  alias, 1 drivers
+v000002658ba49820_0 .net "or_out", 3 0, L_000002658ba49fb0;  alias, 1 drivers
+v000002658ba498c0_0 .net "xor_out", 3 0, L_000002658ba4a2c0;  alias, 1 drivers
+    .scope S_000002658ba4bc40;
+T_0 ;
+    %vpi_call 2 15 "$monitor", "%t, A = %b, B = %b, | AND = %b, OR %b, XOR = %b, NOT = %b", $time, v000002658ba49640_0, v000002658ba47260_0, v000002658ba496e0_0, v000002658ba96c90_0, v000002658ba96290_0, v000002658ba96650_0 {0 0 0};
+    %pushi/vec4 10, 0, 4;
+    %store/vec4 v000002658ba49640_0, 0, 4;
+    %pushi/vec4 12, 0, 4;
+    %store/vec4 v000002658ba47260_0, 0, 4;
+    %delay 10000, 0;
+    %pushi/vec4 15, 0, 4;
+    %store/vec4 v000002658ba49640_0, 0, 4;
+    %pushi/vec4 0, 0, 4;
+    %store/vec4 v000002658ba47260_0, 0, 4;
+    %delay 10000, 0;
+    %pushi/vec4 5, 0, 4;
+    %store/vec4 v000002658ba49640_0, 0, 4;
+    %pushi/vec4 3, 0, 4;
+    %store/vec4 v000002658ba47260_0, 0, 4;
+    %delay 10000, 0;
+    %pushi/vec4 0, 0, 4;
+    %store/vec4 v000002658ba49640_0, 0, 4;
+    %pushi/vec4 15, 0, 4;
+    %store/vec4 v000002658ba47260_0, 0, 4;
+    %delay 10000, 0;
+    %vpi_call 2 20 "$finish" {0 0 0};
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "tb_basic_logic.v";
+    "./basic_logic.v";
